@@ -4,7 +4,8 @@
 
 {{- range $filter := site.Params.rtwt.side.home.taxonomies -}}
   {{- with (index site.Taxonomies $filter) -}}
-    <h3>{{- $filter | title -}}</h3>
+    {{ $i18nTaxonomy := printf "taxonomies.%s" $filter }} 
+    <h3>{{- i18n $i18nTaxonomy | default $filter | title -}}</h3>
     <ul class="taxonomy-list">
     {{- $limit := site.Params.rtwt.side.home.countTaxonomy }}
     {{- $i := $limit -}}
